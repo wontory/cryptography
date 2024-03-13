@@ -6,6 +6,7 @@ import { z } from 'zod'
 import { InputForm, type formSchema } from './components/input-form'
 import { Accordion } from '@/components/ui/accordion'
 import { FrequencyAnalysis } from './components/frequency-analysis'
+import { CombinationyAnalysis } from './components/combination-analysis'
 
 export default function SubstitionCipher() {
   const [ciphertext, setCiphertext] = useState('')
@@ -25,6 +26,7 @@ export default function SubstitionCipher() {
       {showResult && (
         <Accordion type="multiple" className="mt-8 w-full">
           <FrequencyAnalysis value="item-1" ciphertext={ciphertext} />
+          <CombinationyAnalysis value="item-2" ciphertext={ciphertext} />
         </Accordion>
       )}
     </section>
