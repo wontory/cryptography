@@ -39,7 +39,7 @@ export function FrequencyAnalysis({
         </h2>
       </AccordionTrigger>
       <AccordionContent>
-        <div className="relative h-80">
+        <div className="relative mt-6 h-80">
           <Image
             src="https://upload.wikimedia.org/wikipedia/commons/d/d5/English_letter_frequency_%28alphabetic%29.svg"
             alt="English letter frequency chart"
@@ -47,7 +47,7 @@ export function FrequencyAnalysis({
             fill
           />
         </div>
-        <FrequencyCountTable frequencyMap={frequencyMap} className="my-12" />
+        <FrequencyCountTable frequencyMap={frequencyMap} className="my-6" />
         <h3 className="text-2xl font-semibold tracking-tight">
           Top 5 most frequent characters
         </h3>
