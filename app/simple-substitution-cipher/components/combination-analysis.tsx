@@ -61,6 +61,7 @@ export function CombinationyAnalysis({
           <li>
             {Array.from(words)
               .filter(([word]) => word.length === 1)
+              .sort((a, b) => b[1] - a[1])
               .map(([word, count]) => `${word}(${count})`)
               .join(', ')}
           </li>
@@ -72,6 +73,7 @@ export function CombinationyAnalysis({
           <li>
             {Array.from(words)
               .filter(([word]) => word.length === 2)
+              .sort((a, b) => b[1] - a[1])
               .map(([word, count]) => `${word}(${count})`)
               .join(', ')}
           </li>
@@ -83,6 +85,7 @@ export function CombinationyAnalysis({
           <li>
             {Array.from(words)
               .filter(([word]) => word.length === 3)
+              .sort((a, b) => b[1] - a[1])
               .map(([word, count]) => `${word}(${count})`)
               .join(', ')}
           </li>
