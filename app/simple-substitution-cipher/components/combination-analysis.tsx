@@ -52,6 +52,12 @@ export function CombinationyAnalysis({
           </AlertDescription>
         </Alert>
         <h3 className="text-2xl font-semibold tracking-tight">
+          1 Letter Combinations
+        </h3>
+        <ul className="my-6 ml-6 list-disc">
+          <li>{words.filter((word) => word.length === 1).join(', ')}</li>
+        </ul>
+        <h3 className="text-2xl font-semibold tracking-tight">
           2 Letter Combinations
         </h3>
         <ul className="my-6 ml-6 list-disc">
