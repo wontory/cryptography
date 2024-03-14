@@ -17,15 +17,18 @@ export function CombinationyAnalysis({
   value: string
   ciphertext: string
 }) {
-  const [words, setWords] = useState<string[]>([])
+  const [words, setWords] = useState<Map<string, number>>(new Map())
 
   useEffect(() => {
     const trimmedCiphertext = ciphertext
       .replace(/[^A-Z ]/g, ' ')
       .replace(/ +(?= )/g, '')
 
-    const wordSet = new Set(trimmedCiphertext.split(' '))
-    setWords(Array.from(wordSet))
+    const wordsMap = new Map<string, number>()
+    for (const word of trimmedCiphertext.split(' '))
+      wordsMap.set(word, wordsMap.has(word) ? wordsMap.get(word)! + 1 : 1)
+
+    setWords(wordsMap)
   }, [ciphertext])
 
   return (
@@ -55,25 +58,47 @@ export function CombinationyAnalysis({
           1 Letter Combinations
         </h3>
         <ul className="my-6 ml-6 list-disc">
-          <li>{words.filter((word) => word.length === 1).join(', ')}</li>
+          <li>
+            {Array.from(words)
+              .filter(([word]) => word.length === 1)
+              .map(([word, count]) => `${word}(${count})`)
+              .join(', ')}
+          </li>
         </ul>
         <h3 className="text-2xl font-semibold tracking-tight">
           2 Letter Combinations
         </h3>
         <ul className="my-6 ml-6 list-disc">
-          <li>{words.filter((word) => word.length === 2).join(', ')}</li>
+          <li>
+            {Array.from(words)
+              .filter(([word]) => word.length === 2)
+              .map(([word, count]) => `${word}(${count})`)
+              .join(', ')}
+          </li>
         </ul>
         <h3 className="text-2xl font-semibold tracking-tight">
           3 Letter Combinations
         </h3>
         <ul className="my-6 ml-6 list-disc">
-          <li>{words.filter((word) => word.length === 3).join(', ')}</li>
+          <li>
+            {Array.from(words)
+              .filter(([word]) => word.length === 3)
+              .map(([word, count]) => `${word}(${count})`)
+              .join(', ')}
+          </li>
         </ul>
         <h3 className="text-2xl font-semibold tracking-tight">
           4+ Letter Combinations
         </h3>
         <ul className="my-6 ml-6 list-disc">
-          <li>{words.filter((word) => word.length > 3).join(', ')}</li>
+          <li>
+            {Array.from(words)
+              .filter(([word]) => word.length >= 4)
+              .sort((a, b) => b[1] - a[1])
+              .sort((a, b) => a[0].length - b[0].length)
+              .map(([word, count]) => `${word}(${count})`)
+              .join(', ')}
+          </li>
         </ul>
       </AccordionContent>
     </AccordionItem>
